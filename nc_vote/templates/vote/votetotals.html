@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Vote Totals</h1>
+{% for candidate in candidates %}
+    <h2>{{candidate.candidate_text}} {{candidate.votes}}</h2>
+{% endfor %}
+{% endblock %}

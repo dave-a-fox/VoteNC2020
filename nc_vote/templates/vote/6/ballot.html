@@ -1,0 +1,39 @@
+{% extends 'statewide.html' %}
+{% block customcontent %}
+
+    <form action="{% url 'vote:tally' %}" method="post">
+    {% csrf_token %}
+    {% for ballot in ballot_list %}
+
+        <label class="text-center mb-3">{{ballot.ballot_text}}</label>
+        </br>
+        <div class="form-check">
+        {% for candidate in ballot.candidate_set.all %}
+            {% if candidate.district_num == 6 or candidate.district_num == 0 %}
+                <input
+                    type="radio"
+                    class="form-check-input"
+                    name="{{ballot.ballot_text}}"
+                    value="{{candidate.candidate_text}}"
+                >
+                <label>{{candidate.candidate_text}}</label>
+            </br>
+            {% endif %}
+
+
+        {% endfor %}
+        </br>
+        </div>
+    {% endfor %}
+
+            <input
+
+                    type="submit"
+                    value="Cast Your Vote"
+                    class="btn btn-success"
+            />
+
+    </form>
+
+    </form>
+{% endblock %}

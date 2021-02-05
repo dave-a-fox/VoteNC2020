@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="text-center mb-3">Choose Ballot</h1>
+    {% if districts %}
+    {% for district in districts %}
+    <a href="/vote/{{district.district_num}}/ballot">
+        <div class="card mb-3">
+            <div class="card-body">
+                <p class="lead">District {{district.district_num}}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No data available</p>
+    {% endif %}
+{% endblock %}
